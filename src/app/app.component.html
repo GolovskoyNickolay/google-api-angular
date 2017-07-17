@@ -1,9 +1,38 @@
-<agm-map [latitude]="lat" [longitude]="lng"></agm-map>
-<form >
-  <input type="text"
-         required
-         [(ngModel)]="model.address" name="address"
-         #address="ngModel">>
-  <button (click)="getGeo()" [disabled]="!address.valid"></button>
-</form>
+<div class="wrapper">
+  <div class="search">
+    <input type="text"
+           required
+           [(ngModel)]="model.address" name="address"
+           #address="ngModel">
+    <button (click)="getGeo()" [disabled]="!address.valid">Search</button>
+  </div>
 
+  <div class="items">
+    <h4>Your places:</h4>
+    <div class="item"
+         *ngFor="let item of arr; let i = index"
+         (click)="reverseGeo(item.lat,item.lng)">
+      <span class="place">{{item.name}}</span>
+      <span (click)="remove(i)" class="remove">&#10006;</span>
+    </div>
+  </div>
+
+<div class="modal-wrapper" *ngIf="modal">
+  <div class="modal" *ngIf="modal">
+    <p>Do you want to save this location?</p>
+    <label for="name">Name</label>
+    <input type="text"
+           required
+           id="name"
+           [(ngModel)]="model.name" name="name"
+           #name="ngModel">
+    <button (click)="saveGeo()" [disabled]="!name.valid">Save this position</button>
+    <button (click)="hideModal()">No, thanks</button>
+  </div>
+</div>
+
+
+</div>
+
+
+<agm-map [latitude]="lat" [longitude]="lng"></agm-map>

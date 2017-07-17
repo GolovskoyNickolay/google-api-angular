@@ -1,3 +1,32 @@
 agm-map {
   height: 300px;
 }
+.wrapper{
+  min-height: 100px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.search, .items{
+  flex: 1 50%;
+}
+.items h4{
+  margin: 0 0 5px 0;
+}
+.place{
+  cursor: pointer;
+}
+.remove{
+  margin-left: 15%;
+  color: red;
+  cursor: pointer;
+}
+.modal-wrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+}
